@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Backend Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="hero-section">
+        <nav class="container">
+            <h1>YourNameDev</h1>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content container">
+            <p>Hello, I'm</p>
+            <h2>[Your Full Name]</h2>
+            <h3>Backend Developer | Django & Laravel Expert</h3>
+            <a href="#projects" class="btn primary-btn">View My Work</a>
+        </div>
+    </header>
+
+    <section id="about" class="about-section section-padding">
+        <div class="container">
+            <h2 class="section-title">Who I Am</h2>
+            <p class="about-text">
+                I am a passionate backend developer specializing in building **robust and scalable RESTful APIs** using the **Django** (Python) and **Laravel** (PHP) frameworks. My focus is on clean architecture, database optimization, and seamless integration to deliver high-performance applications. With experience in deployment, I ensure reliable and secure services.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">My Technical Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h4>Python & Django</h4>
+                    <p>API development, DRF, Celery, Testing.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-php"></i>
+                    <h4>PHP & Laravel</h4>
+                    <p>Lumen/Laravel API, Eloquent, Queues, Security.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h4>Databases</h4>
+                    <p>PostgreSQL, MySQL, Redis caching.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-docker"></i>
+                    <h4>Deployment & DevOps</h4>
+                    <p>Docker, CI/CD, AWS/DigitalOcean deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects" class="projects-section section-padding">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>E-commerce API (Django)</h3>
+                        <p>A high-availability REST API for a multi-vendor e-commerce platform. Features: JWT auth, payment gateway integration, and optimized PostgreSQL queries.</p>
+                        <span class="tag tag-django">Django REST Framework</span>
+                        <span class="tag tag-python">Python</span>
+                        <a href="[Your GitHub Repo]" target="_blank" class="btn secondary-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>Task Manager API (Laravel)</h3>
+                        <p>A real-time project management API. Features: WebSocket integration with Laravel Echo, automated testing, and Redis caching.</p>
+                        <span class="tag tag-laravel">Laravel API</span>
+                        <span class="tag tag-php">PHP</span>
+                        <a href="[Your GitHub Repo]" target="_blank" class="btn secondary-btn">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p>I am currently open to new opportunities and collaborations. Feel free to connect!</p>
+            <div class="contact-links">
+                <a href="mailto:your.email@example.com" target="_blank" class="contact-btn">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+                <a href="[Your LinkedIn URL]" target="_blank" class="contact-btn">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="[Your GitHub Profile URL]" target="_blank" class="contact-btn">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 [Your Name]. Built with HTML & CSS.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script> 
+</body>
+</html>
