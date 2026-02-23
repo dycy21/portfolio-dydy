@@ -1,379 +1,192 @@
-/* --- Global Styles & Variables --- */
 :root {
-    --primary-color: #3f51b5; /* A professional blue */
-    --secondary-color: #f44336; /* An accent red */
-    --text-color-light: #f5f5f5;
-    --text-color-dark: #333;
-    --bg-color-main: #ffffff;
-    --bg-color-secondary: #f9f9f9;
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --bg-main: #ffffff;
+    --text-main: #18181b;
+    --card-bg: rgba(244, 244, 245, 0.7);
+    --border-main: #e4e4e7;
+    --nav-bg: rgba(255, 255, 255, 0.8);
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+.dark {
+    --bg-main: #0a0a0a;
+    --text-main: #f4f4f5;
+    --card-bg: rgba(24, 24, 27, 0.6);
+    --border-main: #27272a;
+    --nav-bg: rgba(10, 10, 10, 0.8);
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    color: var(--text-color-dark);
-    background-color: var(--bg-color-main);
-    line-height: 1.6;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+#navbar {
+    background: var(--nav-bg);
+    border-color: var(--border-main);
+    backdrop-filter: blur(12px);
 }
 
-.section-padding {
-    padding: 80px 0;
+.project-card, .skill-card, #blog div {
+    background-color: var(--card-bg);
+    border-color: var(--border-main);
 }
 
-.section-title {
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 50px;
-    color: var(--primary-color);
+/* Hover Pop Effects */
+.project-card:hover, .skill-card:hover {
+    transform: translateY(-8px);
+    border-color: #3b82f6 !important;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
 }
 
-/* --- Buttons --- */
-.btn {
-    display: inline-block;
-    padding: 10px 25px;
-    margin-top: 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s, transform 0.2s;
-    font-weight: 500;
+.dark .project-card:hover {
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6);
 }
 
-.primary-btn {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
-    border: 2px solid var(--primary-color);
+/* Navbar Shrink */
+nav.scrolled {
+    width: 75% !important;
+    padding: 8px 20px !important;
+    top: 15px !important;
 }
 
-.primary-btn:hover {
-    background-color: #303f9f;
-    transform: translateY(-2px);
+html { scroll-behavior: smooth; }
+/* --- Navbar Base State --- */
+#navbar {
+    background: transparent;
+    border-color: transparent;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.secondary-btn {
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
-    margin-right: 10px;
+/* --- Glassmorphism Scrolled State --- */
+nav.scrolled {
+    width: 75% !important;
+    padding: 10px 24px !important;
+    top: 20px !important;
+    
+    /* The Glass Effect */
+    background: rgba(255, 255, 255, 0.05) !important; /* Very light tint */
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    
+    /* Soft border and shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.secondary-btn:hover {
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
+/* Specific adjustment for light mode glass */
+html:not(.dark) nav.scrolled {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border: 1px solid rgba(209, 213, 219, 0.3) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
 }
 
-/* --- Header and Navigation --- */
-header {
-    background: var(--primary-color);
-    color: var(--text-color-light);
+/* Ensure the Three.js canvas stays behind everything */
+#bg-canvas {
+    z-index: -1;
 }
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative; /* Needed for absolute positioning of mobile menu */
-}
-
-nav h1 {
-    font-size: 1.8em;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-}
-
-.nav-links a {
-    color: var(--text-color-light);
-    text-decoration: none;
-    padding: 0 15px;
-    font-weight: 300;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--secondary-color);
-}
-
-/* Hero Section */
-.hero-section {
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.hero-content {
-    padding: 60px 20px;
-}
-
-.hero-content p {
-    font-size: 1.2em;
-    font-weight: 300;
-}
-
-.hero-content h2 {
-    font-size: 4em;
-    margin: 5px 0;
-}
-
-.hero-content h3 {
-    font-size: 1.5em;
-    font-weight: 400;
-    margin-bottom: 30px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* --- About Section --- */
-.about-section {
-    background-color: var(--bg-color-secondary);
-}
-
-.about-text {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.1em;
-}
-
-/* --- Skills Section (Grid Layout) --- */
-.skills-section {
-    padding: 80px 0;
-}
-
-.skills-grid {
-    display: grid;
-    /* Uses CSS Grid for a 4-column layout */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 30px;
-    text-align: center;
-}
-
-.skill-card {
-    background: var(--bg-color-main);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: var(--card-shadow);
-    transition: transform 0.3s;
-}
-
-.skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
-.skill-card i {
-    font-size: 3em;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.skill-card h4 {
-    margin-bottom: 10px;
-    color: var(--primary-color);
-}
-
-/* --- Projects Section (Flex Layout) --- */
-.projects-section {
-    background-color: var(--bg-color-secondary);
-}
-
-.projects-grid {
-    display: flex;
-    /* Uses Flexbox for wrapping cards */
-    flex-wrap: wrap; 
-    gap: 30px;
-    justify-content: center;
-}
-
-.project-card {
-    background: var(--bg-color-main);
-    border-radius: 8px;
-    box-shadow: var(--card-shadow);
-    width: 100%; /* Default to full width on mobile */
-    max-width: 550px; /* Max width for a clean look */
-    padding: 30px;
-}
-
-.project-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.tag {
-    display: inline-block;
-    padding: 5px 10px;
-    margin: 5px 5px 15px 0;
-    border-radius: 4px;
-    font-size: 0.8em;
-    font-weight: 700;
-    color: var(--text-color-light);
-}
-
-.tag-django { background-color: #092E20; }
-.tag-python { background-color: #306998; }
-.tag-laravel { background-color: #f4645f; }
-.tag-php { background-color: #777BB4; }
-
-
-/* --- Contact Section --- */
-.contact-section {
-    text-align: center;
-}
-
-.contact-links {
-    margin-top: 30px;
-}
-
-.contact-btn {
+/* Glassmorphism Button Base */
+.btn-glass {
+    position: relative;
+    padding: 12px 32px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     display: inline-flex;
     align-items: center;
-    background-color: var(--primary-color);
-    color: var(--text-color-light);
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    margin: 10px;
-    font-size: 1.1em;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.contact-btn i {
-    margin-right: 10px;
-}
-
-.contact-btn:hover {
-    background-color: #303f9f;
-    transform: translateY(-2px);
-}
-
-
-/* --- Footer --- */
-footer {
-    background-color: var(--text-color-dark);
-    color: var(--text-color-light);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9em;
-}
-
-
-/* ------------------------------------------- */
-/* --- RESPONSIVENESS (Mobile First Approach) --- */
-/* ------------------------------------------- */
-
-/* Tablet & Smaller Desktop (Media Query) */
-@media (max-width: 992px) {
-    .hero-content h2 {
-        font-size: 3em;
-    }
-
-    .skills-grid {
-        /* On tablets, let's switch to 2 columns */
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
-/* --- Mobile Menu Styles --- */
-.nav-toggle {
-    display: none; /* Hide button by default on desktop */
-    background: none;
-    border: none;
-    color: var(--text-color-light);
-    font-size: 1.5em;
-    cursor: pointer;
-    padding: 10px;
-}
-
-/* Mobile Devices (Media Query) */
-@media (max-width: 768px) {
-    /* Show the toggle button */
-    .nav-toggle {
-        display: block;
-    }
-
-    /* Navigation Links Transformation */
-    .nav-links {
-        /* Start hidden and cover full width */
-        position: absolute;
-        top: 60px; /* Adjust based on header height */
-        left: 0;
-        width: 100%;
-        background: var(--primary-color);
-        flex-direction: column;
-        height: 0; /* Initially collapsed */
-        overflow: hidden;
-        transition: height 0.3s ease-in-out;
-        z-index: 100;
-        /* Remove the border added previously */
-        border-bottom: none; 
-    }
-
-    .nav-links li {
-        text-align: center;
-        padding: 15px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
+    gap: 8px;
+    z-index: 1;
     
-    .nav-links a {
-        padding: 0;
-        display: block;
-    }
+    /* Initial Glass State */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+}
 
-    /* State when menu is open (triggered by JS) */
-    .nav-links.nav-open {
-        height: 250px; /* Sufficient height to show all links */
-    }
-    
-    /* General Mobile Layout Adjustments */
-    .hero-content {
-        padding: 40px 20px;
-    }
+/* The "Pop" and Glow Effect on Hover */
+.btn-glass:hover {
+    transform: translateY(-5px) scale(1.05); /* The Pop */
+    background: rgba(59, 130, 246, 0.15); /* Tinted Glass */
+    border-color: rgba(59, 130, 246, 0.5); /* Accent Border */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 
+                0 0 15px rgba(59, 130, 246, 0.2);
+}
 
-    .hero-content h2 {
-        font-size: 2.5em;
-    }
+/* Reflection / Specular Highlight */
+.btn-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+    z-index: -1;
+}
 
-    .hero-content h3 {
-        font-size: 1.2em;
-    }
+.btn-glass:hover::before {
+    left: 100%;
+}
 
-    .section-padding {
-        padding: 50px 0;
-    }
+/* Dark Mode Specific Adjustments */
+.dark .btn-glass {
+    background: rgba(24, 24, 27, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+}
 
-    .section-title {
-        font-size: 2em;
-    }
+.dark .btn-glass:hover {
+    background: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+                0 0 20px rgba(59, 130, 246, 0.3);
+}
+/* Navigation Link Base */
+#navbar .nav-links a {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    color: var(--text-main);
+    font-weight: 500;
+    z-index: 1;
+}
 
-    /* Skills Grid switches to 2 columns (or 1 if needed) */
-    .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
+/* The Pop & Glass Background on Hover */
+#navbar .nav-links a:hover {
+    transform: translateY(-2px) scale(1.1); /* Subtle Pop */
+    color: #3b82f6; /* Accent color change */
+}
 
-    /* Project cards take full width */
-    .project-card {
-        max-width: 100%;
-    }
-    
-    .contact-btn {
-        width: 90%;
-        display: flex;
-        justify-content: center;
-    }
+/* The Glass Capsule Backdrop */
+#navbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(59, 130, 246, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 16px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+#navbar .nav-links a:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Light Mode specific capsule */
+html:not(.dark) #navbar .nav-links a::after {
+    background: rgba(59, 130, 246, 0.05);
+    border: 1px solid rgba(59, 130, 246, 0.1);
 }
