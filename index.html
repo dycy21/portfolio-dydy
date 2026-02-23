@@ -1,130 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Backend Developer Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Divyansh | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="selection:bg-blue-500/30 overflow-x-hidden">
 
-    <header class="hero-section">
-        <nav class="container">
-            <h1>DIVYANSH</h1>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="hero-content container">
-            <p>Hello, I'm</p>
-            <h2>DIVYANSH</h2>
-            <h3>Backend Developer | Django & Laravel Expert</h3>
-            <a href="#projects" class="btn primary-btn">View My Work</a>
-        </div>
-    </header>
+    <canvas id="bg-canvas" class="fixed top-0 left-0 -z-10 w-full h-full pointer-events-none"></canvas>
 
-    <section id="about" class="about-section section-padding">
-        <div class="container">
-            <h2 class="section-title">Who I Am</h2>
-            <p class="about-text">
-                I am a passionate backend developer specializing in building **robust and scalable RESTful APIs** using the **Django** (Python) and **Laravel** (PHP) frameworks. My focus is on clean architecture, database optimization, and seamless integration to deliver high-performance applications. With experience in deployment, I ensure reliable and secure services.
-            </p>
-        </div>
-    </section>
-
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <h2 class="section-title">My Technical Stack</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fab fa-python"></i>
-                    <h4>Python & Django</h4>
-                    <p>API development, DRF, Celery, Testing.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-php"></i>
-                    <h4>PHP & Laravel</h4>
-                    <p>Lumen/Laravel API, Eloquent, Queues, Security.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h4>Databases</h4>
-                    <p>PostgreSQL, MySQL, Redis caching.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-docker"></i>
-                    <h4>Deployment & DevOps</h4>
-                    <p>Docker, CI/CD, AWS/DigitalOcean deployment.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <nav id="navbar" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-3xl 
+    px-6 py-3 rounded-full flex justify-between items-center transition-all duration-500 border">
     
-    <section id="projects" class="projects-section section-padding">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>E-commerce API (Django)</h3>
-                        <p>A high-availability REST API for a multi-vendor e-commerce platform. Features: JWT auth, payment gateway integration, and optimized PostgreSQL queries.</p>
-                        <span class="tag tag-django">Django REST Framework</span>
-                        <span class="tag tag-python">Python</span>
-                        <a href="https://github.com/dycy21" target="_blank" class="btn secondary-btn">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
+    <div class="font-bold text-lg tracking-tighter">DK</div>
+    
+    <div class="nav-links hidden md:flex gap-2 text-sm font-medium">
+        <a href="#">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#blog">Blog</a>
+    </div>
 
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>Task Manager API (Laravel)</h3>
-                        <p>A real-time project management API. Features: WebSocket integration with Laravel Echo, automated testing, and Redis caching.</p>
-                        <span class="tag tag-laravel">Laravel API</span>
-                        <span class="tag tag-php">PHP</span>
-                        <a href="[Your GitHub Repo]" target="_blank" class="btn secondary-btn">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
+    <button id="theme-toggle" class="btn-glass !p-2 rounded-full">
+        </button>
+</nav>
 
+    <main class="max-w-5xl mx-auto px-6 pt-40 pb-20">
+        <section class="mb-32">
+            <div class="space-y-8 text-center md:text-left">
+                <div class="inline-block px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-500 text-xs font-bold uppercase tracking-widest">
+                    Available for Work
                 </div>
-        </div>
-    </section>
+                <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight">
+                    Hi, I'm <span class="text-blue-500">Divyansh</span>
+                </h1>
+                <p class="text-zinc-500 dark:text-zinc-400 text-lg md:text-xl max-w-xl leading-relaxed">
+                    Full Stack Developer specializing in <span class="text-blue-500 font-medium">Python | Django | PHP | Laravel | React</span> and <span class="text-blue-500 font-medium">DevOps</span>.
+                </p>
+                <div class="flex justify-center md:justify-start gap-4">
+    <a href="#projects" class="btn-glass !bg-blue-600 !text-white !border-blue-500 hover:!bg-blue-500">
+        View Work <span>→</span>
+    </a>
+    <a href="#" class="btn-glass">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="opacity-70"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download CV
+    </a>
+</div>
+            </div>
+        </section>
 
-    <section id="contact" class="contact-section section-padding">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p>I am currently open to new opportunities and collaborations. Feel free to connect!</p>
-            <div class="contact-links">
-                <a href="mailto:your.email@example.com" target="_blank" class="contact-btn">
-                    <i class="fas fa-envelope"></i> Email Me
+        <section id="projects" class="mb-32">
+            <h2 class="text-4xl font-bold mb-12">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="project-card group p-8 rounded-[2.5rem] border transition-all duration-500 relative overflow-hidden">
+                    <h3 class="text-2xl font-bold mb-2">Zenith</h3>
+                    <p class="text-zinc-500 dark:text-zinc-400 mb-6">Decentralized music app on Polygon.</p>
+                    <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?w=800" class="rounded-2xl w-full h-48 object-cover group-hover:scale-105 transition-transform" alt="Zenith">
+                </div>
+                <div class="project-card group p-8 rounded-[2.5rem] border transition-all duration-500 relative overflow-hidden">
+                    <h3 class="text-2xl font-bold mb-2">PokeArena</h3>
+                    <p class="text-zinc-500 dark:text-zinc-400 mb-6">NFT Trading on Aptos Move.</p>
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" class="rounded-2xl w-full h-48 object-cover group-hover:scale-105 transition-transform" alt="PokeArena">
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-32">
+            <h2 class="text-4xl font-bold mb-12">Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="skill-card p-6 border rounded-3xl">
+                    <h4 class="text-blue-500 font-bold text-xs uppercase mb-3">Frontend</h4>
+                    <p class="text-sm opacity-80">React, Next.js, Tailwind</p>
+                </div>
+                <div class="skill-card p-6 border rounded-3xl">
+                    <h4 class="text-blue-500 font-bold text-xs uppercase mb-3">Backend</h4>
+                    <p class="text-sm opacity-80">Node.js, Go, Python</p>
+                </div>
+                <div class="skill-card p-6 border rounded-3xl">
+                    <h4 class="text-blue-500 font-bold text-xs uppercase mb-3">Web3</h4>
+                    <p class="text-sm opacity-80">Solidity, Move, Ethers</p>
+                </div>
+                <div class="skill-card p-6 border rounded-3xl">
+                    <h4 class="text-blue-500 font-bold text-xs uppercase mb-3">AI/ML</h4>
+                    <p class="text-sm opacity-80">PyTorch, Scikit, NumPy</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="mb-32">
+            
+            <div class="space-y-4">
+                <div class="flex justify-between items-center p-6 border rounded-2xl hover:border-blue-500 cursor-pointer transition-all">
+                    <h3 class="font-bold">Understanding ZK-Proofs</h3>
+                    <span class="text-blue-500">→</span>
+                </div>
+            </div>
+        </section>
+    </main>
+<footer class="mt-20 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            
+            <div class="space-y-4">
+                <div class="text-xl font-extrabold tracking-tighter">Divyansh</div>
+                <p class="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
+                    Full Stack Developer specialized in creating high-performance web applications and blockchain solutions. Based in Boston.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2">Sitemap</h4>
+                <a href="#" class="text-zinc-600 dark:text-zinc-400 hover:text-blue-500 transition-colors text-sm">Home</a>
+                <a href="#projects" class="text-zinc-600 dark:text-zinc-400 hover:text-blue-500 transition-colors text-sm">Projects</a>
+                <a href="#blog" class="text-zinc-600 dark:text-zinc-400 hover:text-blue-500 transition-colors text-sm">Blog</a>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <h4 class="text-xs font-bold uppercase tracking-widest text-blue-500 mb-2">Connect</h4>
+                <a href="https://linkedin.com" target="_blank" class="text-zinc-600 dark:text-zinc-400 hover:text-blue-500 transition-colors text-sm flex items-center gap-2">
+                    LinkedIn <span>↗</span>
                 </a>
-                <a href="[Your LinkedIn URL]" target="_blank" class="contact-btn">
-                    <i class="fab fa-linkedin"></i> LinkedIn
+                <a href="https://github.com" target="_blank" class="text-zinc-600 dark:text-zinc-400 hover:text-blue-500 transition-colors text-sm flex items-center gap-2">
+                    GitHub <span>↗</span>
                 </a>
-                <a href="[Your GitHub Profile URL]" target="_blank" class="contact-btn">
-                    <i class="fab fa-github"></i> GitHub
+                <a href="mailto:hello@example.com" class="text-zinc-600 dark:text-zinc-400 hover:text-blue-500 transition-colors text-sm flex items-center gap-2">
+                    Email <span>↗</span>
                 </a>
             </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 [Your Name]. Built with HTML & CSS.</p>
+        <div class="pt-8 border-t border-zinc-100 dark:border-zinc-900 flex flex-col md:row justify-between items-center gap-4">
+            <p class="text-[10px] md:text-xs text-zinc-500 font-medium">
+                © 2026 Divyansh. ALL RIGHTS RESERVED.
+            </p>
+            <div class="flex items-center gap-4 text-[10px] md:text-xs text-zinc-400">
+                <span>Built with Next.js & Tailwind</span>
+                <span class="w-1 h-1 bg-zinc-700 rounded-full"></span>
+                <span>Designed by Divyansh</span>
+            </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="js/script.js"></script> 
+    <script src="script.js"></script>
 </body>
 </html>
